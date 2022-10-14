@@ -13,7 +13,7 @@
     <h1 class="btn btn-outline-danger">hello world</h1>
     <h1 class="text-bg-primary bg-gradient">Welcome... to the machine</h1>
     <div class="container card d-flex">{% for message in get_flashed_messages(category_filter = ['error_force_login']) %}
-        <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+        <p class="text-bg-dark text-danger">{{message}}</p> {% endfor %}
         <h1>Register New User</h1>
         <div class="inside">
             <form action="/user/register" method="POST">
