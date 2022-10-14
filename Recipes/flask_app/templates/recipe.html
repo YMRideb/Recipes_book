@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>there is no spoon</title>
+</head>
+
+<body>
+    <div class="container card d-flex">
+        <h1 class="text-bg-primary bg-gradient">Check <u>this</u> out</h1>
+        <h2 class="text-bg-dark bg-danger">{{session.first_name}} is logged in</h2>
+        <a href="/recipes" class="btn btn-outline-primary">Back to Recipes</a>
+        <br>
+        <a href="/logout" class="btn btn-outline-secondary">Logout</a>
+    </div>
+    <div class="container card d-flex">
+        <h2 class="text-bg-dark">{{current_recipe.name}}</h2>
+        <p class="text-bg-dark bg-success">Posted by: {{current_recipe.user.first_name}}</p>
+        <p class="text-bg-dark">Description: {{current_recipe.description}}</p>
+        <p class="text-bg-dark">Instructions: {{current_recipe.instructions}}</p>
+        <p class="text-bg-dark">Under 30 minutes? {%if current_recipe.under_30 == 1: %} Yezzir! {% else: %} Not so much. {% endif %}</p>
+        <p class="text-bg-dark">Date last cooked: {{current_recipe.cooked_date}} </p>
+    </div>
+</body>
+
+</html>

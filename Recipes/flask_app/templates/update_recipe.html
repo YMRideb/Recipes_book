@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Recipe Editor</title>
+</head>
+
+<body>
+    <h1 class="btn btn-outline-danger">hello world</h1>
+    <div class="container card d-flex">
+        <h1 class="text-bg-primary bg-gradient">Edit your Recipe</h1>
+        <a href="/recipes" class="btn btn-outline-primary">Back to Recipes</a>
+        <br>
+        <a href="/logout" class="btn btn-outline-secondary">Logout</a>
+        <form action="/recipes/{{current_recipe.id}}/update" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" value="{{current_recipe.name}}"> {% for message in get_flashed_messages(category_filter = ['error_recipe_name']) %}
+                <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea type="text" name="description" value="{{current_recipe.description}}">{{current_recipe.description}} </textarea> {% for message in get_flashed_messages(category_filter = ['error_recipe_description']) %}
+                <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+            </div>
+            <div>
+                <label for="instructions">Instructions:</label>
+                <textarea type="text" name="instructions" value="{{current_recipe.instructions}}"> {{current_recipe.instructions}} </textarea> {% for message in get_flashed_messages(category_filter = ['error_recipe_cooked_date']) %}
+                <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+            </div>
+            <div>
+                <label for="cooked_date">Date cooked/made:</label>
+                <input type="date" name="cooked_date" /> {% for message in get_flashed_messages(category_filter = ['error_recipe_recipe_char']) %}
+                <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+            </div>
+            <div>
+                <label for="under_30" value="{{current_recipe.under_30}}">Under 30 Minutes:</label>
+                <div>
+                    Yes: <input type="radio" name="under_30" value="1" {% if current_recipe.under_30==1 %} checked {% endif %}/><br> No: <input type="radio" name="under_30" value="0" {% if current_recipe.under_30==0 %} checked {% endif %}> {% for message
+                    in get_flashed_messages(category_filter = ['error_recipe_descript']) %}
+                    <h1 class="text-bg-dark text-danger">{{message}}</h1> {% endfor %}
+                </div>
+            </div>
+            <input type="submit" value="Save Changes" class="btn btn-outline-danger">
+        </form>
+    </div>
+</body>
+
+</html>
